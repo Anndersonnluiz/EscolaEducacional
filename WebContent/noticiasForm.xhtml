@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+	<f:viewParam name="id" value="#{noticiasMB.editarId}" />
+	<f:event listener="#{noticiasMB.carregarNoticias}" type="preRenderView" />
+</f:metadata>
+
+<ui:composition template="/WEB-INF/templates/padrao.xhtml">
+	<ui:define name="conteudo">
+	<br /><br /><br /><br />
+		<div class="page-header">
+			<h1 style="margin-left:1%;">
+				Noticias <small>Novo</small>
+			</h1>
+		</div>
+		<div class="col-md-7">
+			<h:form>
+				<h:panelGroup rendered="#{not empty noticiasMB.noticias.idnoticias}">
+					<div class="form-group id">
+						<label for="exampleId">ID</label>
+						<h:inputText styleClass="form-control" readonly="true"
+							value="#{noticiasMB.noticias.idnoticias}" id="exampleId" />
+					</div>
+				</h:panelGroup>
+				<h:inputHidden value="#{noticiasMB.noticias.idnoticias}"  />
+				
+				<div class="form-group">
+					<label for="exampleInputTitulo">Titulo</label>
+					<h:inputText styleClass="form-control"
+						value="#{noticiasMB.noticias.titulo}" id="exampleInputTitulo" />
+				</div>
+				
+				<div class="form-group">
+					<label for="exampleInputDescricao">Descrição</label>
+					<h:inputText styleClass="form-control"
+						value="#{noticiasMB.noticias.descricao}" id="exampleInputDescricao" />
+				</div>
+				
+				<button type="reset" class="btn btn-default">Restaurar</button>
+				<h:commandButton styleClass="btn btn-success"
+					action="#{noticiasMB.salvar}" value="Salvar" style="margin-left:5%;"/>
+				<br /><br />
+				<h:link value="Noticias Cadastradas" outcome="/noticiasList" styleClass="btn btn-default"/>
+			</h:form>
+		</div>
+	</ui:define>
+
+</ui:composition>
+</html>

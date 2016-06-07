@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Escola Educacional</ui:insert></title>
+	<h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet name="/bootstrap/template/offcanvas.css" />
+</h:head>
+
+<h:body>
+	<div class="col-md-7" style="margin-left:30%;width: 40%;">
+			<h:form>
+			<br /><br /><br /><br /><br /><br />  
+			<fieldset>
+			
+			<legend>Escola Educacional</legend>
+				 
+				<div class="form-group">
+					<label for="exampleInputLogin">Login</label>
+					<h:inputText styleClass="form-control" id="exampleInputLogin"
+						value="#{usuarioLogadoMB.usuario.login}" />
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Senha</label>
+					<h:inputSecret styleClass="form-control" id="exampleInputPassword1"
+						value="#{usuarioLogadoMB.usuario.senha}" />
+				</div>    
+				 
+				<button type="reset" class="btn btn-default" style="margin-left:60%;">Restaurar</button>
+				<h:commandButton styleClass="btn btn-success" 
+					action="#{usuarioLogadoMB.validarUsuario}" value="Entrar" style="margin-left:5%;"/>
+				</fieldset>
+			</h:form>
+		</div>
+		
+		<img src="resources/img/loginEntrada.png" width="100%" style="margin-top:6.9%;"/>
+
+	<h:outputScript name="/jquery.min.js" />
+	<h:outputScript name="/menu.js" />
+	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+	<h:outputScript name="/bootstrap/template/offcanvas.js" />
+</h:body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/WEB-INF/templates/padrao.xhtml">
+	<ui:define name="conteudo">
+	<br /><br /><br /><br />
+		<div class="page-header">
+			<h1 style="margin-left:1%;">
+				Vincular Aluno <small>Novo</small>
+			</h1>
+		</div>
+		<div class="col-md-7">
+			<h:form>
+			
+				
+				
+				<div class="form-group">
+					<label for="exampleInputProfessor">Professor</label>
+					<h:selectOneMenu  id="exampleInputProfessor"  style="width: 200px;margin-left: 2%"  value="#{vincularTurmaMB.usuario}" converter="ProfessorConverter"
+                             panelStyle="width:180px" >
+		                    <f:selectItem  itemLabel="Selecione" itemValue="0" noSelectionOption="true"/> 
+		                    <f:selectItems  value="#{vincularTurmaMB.listaProfessor}" var="usuarioselecionado" itemLabel="#{usuarioselecionado.nome}" itemValue="#{usuarioselecionado}"/>
+		                    <f:attribute name="listaProfessor" value="#{vincularTurmaMB.listaProfessor}"/>
+                	</h:selectOneMenu>
+				</div>
+				
+				<div class="form-group">
+					<label for="exampleInputTurma">Turma</label>
+					<h:selectOneMenu  id="exampleInputTurma"  style="width: 200px;margin-left: 2%"  value="#{vincularTurmaMB.turma}" converter="TurmaConverter"
+                             panelStyle="width:180px" >
+		                    <f:selectItem  itemLabel="Selecione" itemValue="0" noSelectionOption="true"/> 
+		                    <f:selectItems  value="#{vincularTurmaMB.listaTurma}" var="turmaselecionado" itemLabel="#{turmaselecionado.descricao}" itemValue="#{turmaselecionado}"/>
+		                    <f:attribute name="listaTurma" value="#{vincularTurmaMB.listaTurma}"/>
+                	</h:selectOneMenu>
+				</div>
+				
+				<button type="reset" class="btn btn-default">Restaurar</button>
+				<h:commandButton styleClass="btn btn-success" 
+					action="#{vincularTurmaMB.salvar}" value="Salvar" />
+			</h:form>
+		</div>
+	</ui:define>
+
+</ui:composition>
+</html>

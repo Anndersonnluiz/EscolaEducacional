@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/padrao.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<br /><br /><br /><br /><br /><br />
+			<h:dataTable value="#{usuarioMB.listaUsuario}" var="user"
+				styleClass="table" style="width:80%;">
+				<f:facet name="header">Usuários</f:facet>
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{user.idUsuario}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{user.nome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Fone</f:facet>
+					<h:outputText value="#{user.fone}" />
+				</h:column>
+				<h:column>
+						<span> <h:link styleClass="btn btn-default"
+								outcome="/usuarioForm" value="Editar">
+								<f:param name="id" value="#{user.idUsuario}" />
+							</h:link>
+						</span> 
+						<span> <h:commandLink styleClass="btn btn-warning"
+								action="#{usuarioMB.excluir}" value="Excluir"
+								onclick="return confirm('Tem certeza da exclusão do usuario  #{user.idUsuario}')" >
+								<f:param name="idusuario" value="#{user.idUsuario}"/>
+								</h:commandLink>
+						</span>
+					
+					 
+				</h:column> 
+	
+			</h:dataTable>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

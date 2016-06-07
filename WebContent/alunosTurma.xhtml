@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/padrao.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<br /><br /><br /><br /><br /><br />
+			<h3 style="text-align:center;">Ficha da turma</h3>
+			<hr/>
+			<h:outputLabel value="Professor: #{alunosTurmasMB.nomeProfessor.nome}" style="margin-left:5%;"/>
+			<h:outputLabel value="Serie: #{alunosTurmasMB.turma.descricao}" style="margin-left:30%;"/>
+			<h:dataTable value="#{alunosTurmasMB.listaUsuario}" var="usuario"
+				styleClass="table" style="width:80%;margin-left:5%;">
+				<f:facet name="header">Alunos</f:facet>
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{usuario.idusuario}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{usuario.nome}" />
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

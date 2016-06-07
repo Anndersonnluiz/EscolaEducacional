@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+
+<ui:composition template="/WEB-INF/templates/padrao.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<br /><br /><br /><br /><br /><br />
+			<h3 style="margin-left:40%;">Lista de Turmas</h3>
+			<h:dataTable value="#{turmaMB.listaTurma}" var="turma"
+				styleClass="table" style="width:80%;margin-left:10%;">
+				<f:facet name="header">Turmas</f:facet>
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{turma.idturma}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Descrição</f:facet>
+					<h:outputText value="#{turma.descricao}" />
+				</h:column>
+				<h:column>
+						<span> <h:link styleClass="btn btn-default"
+								outcome="/turmaForm" value="Editar">
+								<f:param name="id" value="#{turma.idturma}" />
+							</h:link>
+						</span> 
+						<span> <h:commandLink styleClass="btn btn-warning"
+								action="#{turmaMB.excluir}" value="Excluir"
+								onclick="return confirm('Tem certeza da exclusão da turma  #{turma.idturma}')" >
+								<f:param name="idturma" value="#{turma.idturma}"/>
+								</h:commandLink>
+						</span>
+					
+					 
+				</h:column> 
+				 
+				<h:column> 
+					 <h:commandLink styleClass="btn btn-default"
+								action="#{turmaMB.listaAlunosTurma}" value="Ver turma">
+							<f:param name="listaTurma" value="#{turma.idturma}" />
+					 </h:commandLink>
+					
+				</h:column>  
+			</h:dataTable>
+		</h:form>
+	</ui:define> 
+</ui:composition>
+</html>

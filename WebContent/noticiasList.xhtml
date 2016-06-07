@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/padrao.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<br /><br /><br /><br /><br /><br />
+			<h:dataTable value="#{noticiasMB.listarNoticias}" var="noticias"
+				styleClass="table" style="width:80%;">
+				<f:facet name="header">Noticias</f:facet>
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{noticias.idnoticias}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Titulo</f:facet>
+					<h:outputText value="#{noticias.titulo}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Descrição</f:facet>
+					<h:outputText value="#{noticias.descricao}" />
+				</h:column>
+				<h:column>
+						<span> <h:link styleClass="btn btn-default"
+								outcome="/noticiasForm" value="Editar">
+								<f:param name="id" value="#{noticias.idnoticias}" />
+							</h:link>
+						</span> 
+						<span> <h:commandLink styleClass="btn btn-warning"
+								action="#{noticiasMB.excluir}" value="Excluir"
+								onclick="return confirm('Tem certeza da exclusão da turma  #{noticias.idnoticias}')" >
+								<f:param name="idnoticias" value="#{noticias.idnoticias}"/>
+								</h:commandLink>
+						</span>
+					
+					 
+				</h:column> 
+
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
