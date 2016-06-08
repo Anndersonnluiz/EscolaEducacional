@@ -142,29 +142,6 @@ public class TurmaMB {
 		return "turmaList";
 	}
 	
-	public String listaAlunosTurma(){
-		FacesContext fc = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-        String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("listaTurma");
-        Integer idTurma = Integer.parseInt(id);
-        try {
-			turma = turmaRN.consultar(idTurma);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        session.setAttribute("turma", turma);
-        return"alunosTurma";
-	}
-	
-	public String excluir(){
-		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idturma");
-		Integer idturma = Integer.parseInt(id);
-		turmaRN.excluir(idturma);
-		listaTurma = null;
-		
-		return "";
-	}
 	
 	
 
