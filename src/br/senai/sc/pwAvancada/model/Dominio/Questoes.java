@@ -19,9 +19,6 @@ public class Questoes {
 	private Integer idquestoes;
 	@Column(name = "descricao")
 	private String descricao;
-	@JoinColumn(name = "avaliacao_idavaliacao", referencedColumnName = "idavaliacao")
-    @ManyToOne(optional = false)
-    private Avaliacao avaliacao;
 	
 	public Integer getIdquestoes() {
 		return idquestoes;
@@ -36,13 +33,7 @@ public class Questoes {
 		this.descricao = descricao;
 	}
 	
-	public Avaliacao getAvaliacao() {
-		return avaliacao;
-	}
-	public void setAvaliacao(Avaliacao avaliacao) {
-		this.avaliacao = avaliacao;
-	}
-	
+
 	
 	
 }

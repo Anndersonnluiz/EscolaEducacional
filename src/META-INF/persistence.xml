@@ -7,7 +7,6 @@
 		<class>br.senai.sc.pwAvancada.model.Dominio.Turma</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Noticias</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Atividade</class>
-		<class>br.senai.sc.pwAvancada.model.Dominio.Avaliacao</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Questoes</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Questoesrespostas</class>
 		<properties>
