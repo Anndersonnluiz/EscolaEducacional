@@ -142,6 +142,7 @@ public class TurmaMB {
 		return "turmaList";
 	}
 	
+	
 	public String listaAlunosTurma(){
 		FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
@@ -167,5 +168,5 @@ public class TurmaMB {
 		
 		return "";
 	}
-
+	
 }
