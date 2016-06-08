@@ -157,6 +157,15 @@ public class TurmaMB {
         return"alunosTurma";
 	}
 	
+
 	
+	public String excluir(){
+		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idturma");
+		Integer idturma = Integer.parseInt(id);
+		turmaRN.excluir(idturma);
+		listaTurma = null;
+		
+		return "";
+	}
 
 }
