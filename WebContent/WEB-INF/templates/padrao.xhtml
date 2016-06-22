@@ -10,6 +10,10 @@
 	<title><ui:insert name="title">Escola Educacional</ui:insert></title>
 	<h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
 	<h:outputStylesheet name="/bootstrap/template/offcanvas.css" />
+	<h:outputStylesheet
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+		
+		<h:outputScript name="/libs/jquery-1.12.3.min.js" />
 </h:head>
 
 <h:body>
@@ -29,9 +33,6 @@
 			<ul class="nav navbar-nav">
 				<li><h:link outcome="/inicial" value="Início" />
 				</li>
-				<li><h:link outcome="/usuarioList" value="Usuarios" /></li>
-				<li><h:link outcome="/login" value="Entrar" /></li>
-				
 				
 			</ul> 
 			
@@ -44,6 +45,11 @@
 						<li><h:link outcome="/perfilform" value="Cad. Perfil" /></li>
 						<li><h:link outcome="/turmaForm" value="Cad. de Turma" /></li>
 						<li><h:link outcome="/noticiasForm" value="Cad. de Noticias" /></li>
+						<li><h:link outcome="/usuarioForm" value="Cad. de Usuário" /></li>
+						<li><h:link outcome="/avaliacaoForm" value="Cad. de Avaliacao" /></li>
+						<li role="separator" class="divider"></li>
+						<li><h:link outcome="/usuarioList" value="Lista de usuário" /></li>
+						<li><h:link outcome="/noticiasList" value="Lista de noticias" /></li>
 						<li role="separator" class="divider"></li>
 						<li><h:link outcome="/vincularAlunoTurma" value="Vincular Aluno" /></li>
 						<li><h:link outcome="/vincularProfessorTurma" value="Vincular Professor" /></li>
@@ -70,6 +76,9 @@
 	<h:outputScript name="/menu.js" />
 	<h:outputScript name="/bootstrap/js/bootstrap.js" />
 	<h:outputScript name="/bootstrap/template/offcanvas.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+		<h:outputScript name="/libs/moment-with-locales.js" />
 </h:body>
 
 </html>

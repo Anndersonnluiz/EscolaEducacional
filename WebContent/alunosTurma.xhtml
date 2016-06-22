@@ -26,6 +26,13 @@
 					<h:outputText value="#{usuario.nome}" />
 				</h:column>
 				
+				<span> <h:commandLink styleClass="btn btn-warning"
+								action="#{alunosTurmasMB.excluirAluno}" value="Excluir"
+								onclick="return confirm('Tem certeza da exclusão do aluno  #{usuario.nome} da turma ?')" >
+							<f:param name="idturma" value="#{usuario.idUsuario}"/>
+						</h:commandLink>
+			    </span>
+				
 			</h:dataTable>
 		</h:form>
 	</ui:define>

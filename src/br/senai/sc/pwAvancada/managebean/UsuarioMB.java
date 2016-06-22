@@ -257,7 +257,7 @@ public class UsuarioMB {
 	public String salvar(){
 		
 		usuario.setPerfil(perfil);
-		if (usuario.getIdUsuario() == 0) {
+		if (usuario.getIdUsuario() == 0) { 
 			usuario.setIdUsuario(null);
 		}
 		String senha  = usuario.getSenha();
@@ -269,7 +269,6 @@ public class UsuarioMB {
 		}
 		try {
 			turma = turmaRN.consultar(1);
-			usuario.setTurma(turma);
 			usuarioRN.salvar(usuario);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -277,7 +276,7 @@ public class UsuarioMB {
 		}
 		usuario = new Usuario();
 		listaUsuario = null;
-		return "";
+		return "usuarioList";
 	}
 	
 	

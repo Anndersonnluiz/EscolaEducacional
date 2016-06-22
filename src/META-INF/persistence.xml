@@ -4,11 +4,11 @@
 		<class>br.senai.sc.pwAvancada.model.Dominio.Administrador</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Usuario</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Perfil</class>
-		<class>br.senai.sc.pwAvancada.model.Dominio.Turma</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Noticias</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Atividade</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Questoes</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Questoesrespostas</class>
+		<class>br.senai.sc.pwAvancada.model.Dominio.Turma</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>

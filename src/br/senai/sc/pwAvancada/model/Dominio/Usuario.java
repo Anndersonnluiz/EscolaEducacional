@@ -30,14 +30,9 @@ public class Usuario {
 	private String login;
 	@Column(name = "senha")
 	private String senha;
-	@Column(name = "tipoAcesso")
-	private String tipoAcesso;
 	@JoinColumn(name = "perfil_idperfil", referencedColumnName = "idperfil")
     @ManyToOne(optional = false)
     private Perfil perfil;
-	@JoinColumn(name = "turma_idturma", referencedColumnName = "idturma")
-    @ManyToOne(optional = false)
-    private Turma turma;
 	
 	public Usuario() {
 		// TODO Auto-generated constructor stub
@@ -88,16 +83,6 @@ public class Usuario {
 	}
 
 
-	public Turma getTurma() {
-		return turma;
-	}
-
-
-	public void setTurma(Turma turma) {
-		this.turma = turma;
-	}
-
-
 	public String getLogin() {
 		return login;
 	}
@@ -117,16 +102,6 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-
-	public String getTipoAcesso() {
-		return tipoAcesso;
-	}
-
-
-	public void setTipoAcesso(String tipoAcesso) {
-		this.tipoAcesso = tipoAcesso;
-	}
-	
 	
 	
 	

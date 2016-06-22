@@ -7,12 +7,15 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ComponentSystemEvent;
 import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpSession;
 
 import br.senai.sc.pwAvancada.model.Dominio.Turma;
 import br.senai.sc.pwAvancada.model.Dominio.TurmaRN;
+import br.senai.sc.pwAvancada.model.Dominio.Usuario;
+import br.senai.sc.pwAvancada.model.Dominio.UsuarioRN;
 
 
 @ManagedBean
@@ -23,6 +26,7 @@ public class TurmaMB {
 	private TurmaRN turmaRN;
 	private Integer editarId;
 	private List<Turma> listaTurma;
+	private Usuario alunoSelecionado;
 	
 	@PostConstruct
 	public void init(){
@@ -33,6 +37,22 @@ public class TurmaMB {
 	}
 	
 	
+
+
+
+	public Usuario getAlunoSelecionado() {
+		return alunoSelecionado;
+	}
+
+
+
+
+
+	public void setAlunoSelecionado(Usuario alunoSelecionado) {
+		this.alunoSelecionado = alunoSelecionado;
+	}
+
+
 
 
 
@@ -167,6 +187,30 @@ public class TurmaMB {
 		listaTurma = null;
 		
 		return "";
+	}
+	
+	
+	public void adicionarAluno(AjaxBehaviorEvent event) {
+		UsuarioRN usuarioRN = new UsuarioRN();
+		try {
+			alunoSelecionado = usuarioRN.consultar(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(alunoSelecionado == null){
+			return;
+		}
+		List<Usuario> lista = new  ArrayList<Usuario>();
+		turma.setListaAlunos(lista);
+		turma.getListaAlunos().add(alunoSelecionado);
+		alunoSelecionado = null;
+	}
+	
+	public void excluirAluno(AjaxBehaviorEvent event){
+		Usuario aluno = (Usuario) event.getComponent().getAttributes()
+				.get("idAluno");
+		turma.getListaAlunos().remove(aluno);
 	}
 	
 }

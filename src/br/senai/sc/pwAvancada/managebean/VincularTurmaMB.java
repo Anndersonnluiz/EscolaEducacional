@@ -149,7 +149,6 @@ public class VincularTurmaMB {
 	public void salvar(){
 		try {
 			usuario = usuarioRN.consultar(usuario.getIdUsuario());
-			usuario.setTurma(turma);
 			usuario = usuarioRN.salvar(usuario);
 			usuario = new Usuario();
 		} catch (SQLException e) {

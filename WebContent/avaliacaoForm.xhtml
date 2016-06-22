@@ -20,7 +20,7 @@
 			</h1>
 		</div>
 		<div class="col-md-7">
-			<h:form>
+			<h:form style="width:60%; margin-left:20%;">
 				<h:panelGroup rendered="#{not empty usuarioMB.usuario.idUsuario}">
 					<div class="form-group id">
 						<label for="exampleId">ID</label>
@@ -33,14 +33,47 @@
 				
 				
 				<div class="form-group">
-					<label for="exampleInputDescricao">Descrição</label>
+					<label for="exampleInputDescricao">Nome da Prova</label>
 					<h:inputText styleClass="form-control"
 						value="#" id="exampleInputDescricao" />
 				</div>
+				<div class="form-group"> 
+					<label for="exampleInputData">Data: </label>
+					<h:outputLabel value="12/12/12" />
+				</div>
+				
 				<div class="form-group">
-					<label for="exampleInputData">Data</label>
-					<h:inputText styleClass="form-control" id="exampleInputData"
-						value="#" />
+					<label for="exampleInputPergunta">Pergunta: </label>
+					<h:inputText styleClass="form-control"
+						value="#" id="exampleInputPergunta" />
+				</div>
+				
+				<div class="form-group">
+					<label for="exampleInputResposta">Resposta 1</label>
+					<h:inputText styleClass="form-control"
+						value="#" id="exampleInputResposta" /> 
+						<h:selectBooleanCheckbox value="#"/>
+				</div>
+				
+				<div class="form-group">
+					<label for="exampleInputRespotas2">Resposta 2</label>
+					<h:inputText styleClass="form-control"
+						value="#" id="exampleInputRespotas2" />
+						<h:selectBooleanCheckbox value="#" />
+				</div>
+				
+				<div class="form-group">
+					<label for="exampleInputRespostas3">Resposta 3</label>
+					<h:inputText styleClass="form-control"
+						value="#" id="exampleInputRespostas3" />
+						<h:selectBooleanCheckbox value="#" />
+				</div>
+				
+				<div class="form-group">
+					<label for="exampleInputResposta4">Resposta 4</label>
+					<h:inputText styleClass="form-control"
+						value="#" id="exampleInputResposta4" />
+						<h:selectBooleanCheckbox value="#" />
 				</div>
 				
 				<button type="reset" class="btn btn-default">Restaurar</button>
