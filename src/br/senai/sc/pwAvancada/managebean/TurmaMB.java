@@ -19,6 +19,7 @@ import br.senai.sc.pwAvancada.model.Dominio.TurmaUsuarioRN;
 import br.senai.sc.pwAvancada.model.Dominio.Turmausuario;
 import br.senai.sc.pwAvancada.model.Dominio.Usuario;
 import br.senai.sc.pwAvancada.model.Dominio.UsuarioRN;
+import br.senai.sc.pwAvancada.util.Formatacao;
 
 
 @ManagedBean
@@ -211,10 +212,10 @@ public class TurmaMB {
 		TurmaUsuarioRN turmaUsuarioRN = new TurmaUsuarioRN();
 		if (turma.getIdturma() == 0) {
 			turma.setIdturma(null);
-		}
+		} 
 		try {
-			turma.setDataInicio(new Date());
-			turma.setDataFinalPrevista(new Date());
+			turma.setDataInicio(Formatacao.ConvercaoStringData(dataInicio));
+			turma.setDataFinalPrevista(Formatacao.ConvercaoStringData(dataTermino));
 			turma = turmaRN.salvar(turma);
 			for (int i = 0; i < listaAlunoTurma.size(); i++) {
 				Turmausuario turmausuario = new Turmausuario();
