@@ -9,6 +9,8 @@
 		<class>br.senai.sc.pwAvancada.model.Dominio.Questoes</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Questoesrespostas</class>
 		<class>br.senai.sc.pwAvancada.model.Dominio.Turma</class>
+		<class>br.senai.sc.pwAvancada.model.Dominio.Avaliacao</class>
+		<class>br.senai.sc.pwAvancada.model.Dominio.Respostas</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>

@@ -2,6 +2,7 @@ package br.senai.sc.pwAvancada.managebean;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpSession;
 
 import br.senai.sc.pwAvancada.model.Dominio.Turma;
 import br.senai.sc.pwAvancada.model.Dominio.TurmaRN;
+import br.senai.sc.pwAvancada.model.Dominio.TurmaUsuarioRN;
+import br.senai.sc.pwAvancada.model.Dominio.Turmausuario;
 import br.senai.sc.pwAvancada.model.Dominio.Usuario;
 import br.senai.sc.pwAvancada.model.Dominio.UsuarioRN;
 
@@ -27,16 +30,41 @@ public class TurmaMB {
 	private Integer editarId;
 	private List<Turma> listaTurma;
 	private Usuario alunoSelecionado;
+	private String dataInicio;
+	private String dataTermino;
+	private List<Usuario> listaAlunoTurma;
 	
 	@PostConstruct
 	public void init(){
 		if (turma == null) {
 			turma = new Turma();
 		}
+		if (alunoSelecionado == null) {
+			alunoSelecionado = new Usuario();
+		}
+		if (listaAlunoTurma == null) {
+			listaAlunoTurma = new ArrayList<Usuario>();
+		}
 		turmaRN = new TurmaRN();
 	}
 	
 	
+
+
+
+	public List<Usuario> getListaAlunoTurma() {
+		return listaAlunoTurma;
+	}
+
+
+
+
+
+	public void setListaAlunoTurma(List<Usuario> listaAlunoTurma) {
+		this.listaAlunoTurma = listaAlunoTurma;
+	}
+
+
 
 
 
@@ -104,6 +132,38 @@ public class TurmaMB {
 
 
 
+	public String getDataInicio() {
+		return dataInicio;
+	}
+
+
+
+
+
+	public void setDataInicio(String dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+
+
+
+
+	public String getDataTermino() {
+		return dataTermino;
+	}
+
+
+
+
+
+	public void setDataTermino(String dataTermino) {
+		this.dataTermino = dataTermino;
+	}
+
+
+
+
+
 	public List<Turma> getListaTurma() {
 		String sql = "Select u from Turma u";
 		if (listaTurma == null) {
@@ -148,11 +208,20 @@ public class TurmaMB {
 
 	
 	public String salvar(){
+		TurmaUsuarioRN turmaUsuarioRN = new TurmaUsuarioRN();
 		if (turma.getIdturma() == 0) {
 			turma.setIdturma(null);
 		}
 		try {
-			turmaRN.salvar(turma);
+			turma.setDataInicio(new Date());
+			turma.setDataFinalPrevista(new Date());
+			turma = turmaRN.salvar(turma);
+			for (int i = 0; i < listaAlunoTurma.size(); i++) {
+				Turmausuario turmausuario = new Turmausuario();
+				turmausuario.setTurma(turma);
+				turmausuario.setUsuario(listaAlunoTurma.get(i));
+				turmaUsuarioRN.salvar(turmausuario);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -190,21 +259,14 @@ public class TurmaMB {
 	}
 	
 	
-	public void adicionarAluno(AjaxBehaviorEvent event) {
-		UsuarioRN usuarioRN = new UsuarioRN();
-		try {
-			alunoSelecionado = usuarioRN.consultar(1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void adicionarAluno() {
 		if(alunoSelecionado == null){
 			return;
 		}
-		List<Usuario> lista = new  ArrayList<Usuario>();
-		turma.setListaAlunos(lista);
-		turma.getListaAlunos().add(alunoSelecionado);
-		alunoSelecionado = null;
+		if (listaAlunoTurma == null) {
+			listaAlunoTurma = new ArrayList<Usuario>();
+		}
+		listaAlunoTurma.add(alunoSelecionado);
 	}
 	
 	public void excluirAluno(AjaxBehaviorEvent event){

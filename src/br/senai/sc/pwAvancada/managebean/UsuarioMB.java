@@ -240,6 +240,8 @@ public class UsuarioMB {
 		
 		try {
 			usuario = usuarioRN.consultar(editarId);
+			usuario.setSenha("senha");
+			perfil = usuario.getPerfil();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

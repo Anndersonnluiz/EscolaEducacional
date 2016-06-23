@@ -148,7 +148,7 @@ public class PerfilMB{
 			e.printStackTrace();
 		}
 		listarPerfil = null;
-		return "";
+		return "perfilList";
 	}
 	
 	

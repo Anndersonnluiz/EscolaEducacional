@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html" 
-	xmlns:f="http://java.sun.com/jsf/core"> 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"> 
 
 <f:metadata>
 	<f:viewParam name="id" value="#{turmaMB.editarId}" />
@@ -31,59 +32,42 @@
 				
 				<div class="form-group">
 					<label for="exampleInputDescricao">Descrição</label>
-					<h:inputText styleClass="form-control"
+					<p:inputText styleClass="form-control" 
 						value="#{turmaMB.turma.descricao}" id="exampleInputDescricao" />
 				</div>
 				
 				<div class="form-group">
 					<label>Data de Inicio</label>
-					<div class='input-group date datetimepicker'>
-						<h:inputText styleClass="form-control"
-							value="#{turmaMB.turma.dataInicio}">
-							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" /> 
-						</h:inputText>
-						<span class="input-group-addon"> <span
-							class="glyphicon glyphicon-calendar"></span>
-						</span>
-					</div>
+					<p:inputMask mask="99/99/9999" styleClass="form-control" style="width:30%;" value="#{turmaMB.dataInicio}"/>
 				</div>
-			
+			 
 				<div class="form-group">
 					<label>Data de termino prevista</label>
-					<div class='input-group date datetimepicker'>
-						<h:inputText styleClass="form-control"
-							value="#{turmaMB.turma.dataFinalPrevista}">
-							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-						</h:inputText>
-						<span class="input-group-addon"> <span
-							class="glyphicon glyphicon-calendar"></span>
-						</span>
-					</div>
+					<p:inputMask mask="99/99/9999" styleClass="form-control" style="width:30%;" value="#{turmaMB.dataTermino}"/>
 				</div>
 			
 				<div class="row">
 					<div class="col-sm-9">
-						<h:selectOneMenu id="uiSelecionaAluno" styleClass="form-control"
-							value="#{turmaMB.alunoSelecionado}">
-							<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
-							<f:selectItems value="#{usuarioMB.listaUsuario}" var="cli"
-								itemLabel="#{cli.nome}" itemValue="#{cli}" />
+						<h:selectOneMenu id="uiSelecionaAluno" styleClass="form-control" converter="UsuarioConverter"
+							value="#{turmaMB.alunoSelecionado}" panelStyle="280px">
+							<f:selectItem  itemLabel="Selecione" itemValue="0" noSelectionOption="true"/> 
+		                    <f:selectItems  value="#{usuarioMB.listaUsuario}" var="usuarioSelecionado" itemLabel="#{usuarioSelecionado.nome}" itemValue="#{usuarioSelecionado}"/>
+		                    <f:attribute name="listaUsuario" value="#{usuarioMB.listaUsuario}"/>
 						</h:selectOneMenu>
 					</div>
 					<div class="col-sm-3">
-						<h:commandLink styleClass="btn btn-success">
-							<f:ajax event="click" execute="uiSelecionaAluno"
-								listener="#{turmaMB.adicionarAluno}"
-								render="uiTurmaAluno uiSelecionaAluno" />
+						<p:commandLink styleClass="btn btn-success" ajax="false" action="#{turmaMB.adicionarAluno}">
+							<p:ajax event="click"
+								update="uiTurmaAluno" />
 							<span class="glyphicon glyphicon-plus"></span>
-						</h:commandLink>
+						</p:commandLink>
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="col-sm-12">
 						<h:dataTable styleClass="table-condensed table-hover"
-							id="uiTurmaAluno" value="#{turmaMB.turma.listaAlunos}"
+							id="uiTurmaAluno" value="#{turmaMB.listaAlunoTurma}"
 							var="aluno"> 
 							<h:column>
 								<f:facet name="header">Nome</f:facet>
@@ -91,16 +75,14 @@
 							</h:column> 
 							<h:column>
 								<f:facet name="header">controle</f:facet>
-								<h:commandLink>
+								<p:commandLink action="#{turmaMB.excluirAluno}">
 									<f:attribute name="idAluno" value="#{aluno}" />
-									<f:ajax event="click" execute="@form"
-									 render="@form"
-									 onevent="setdatepicker"
-									listener="#{turmaMB.excluirAluno}"/>
+									<p:ajax event="click"
+									listener="#{turmaMB.excluirAluno}" update="uiTurmaAluno"/>
 									<span class="glyphicon glyphicon-remove-circle"></span>
-								</h:commandLink> 
+								</p:commandLink> 
 							</h:column>
-						</h:dataTable>
+						</h:dataTable> 
 					</div>
 				</div>
 				
@@ -108,9 +90,10 @@
 				<h:commandButton styleClass="btn btn-success"
 					action="#{turmaMB.salvar}" value="Salvar" style="margin-left:5%;"/>
 				<br /><br />
-				<h:link value="Turmas Cadastradas" outcome="/turmaList" styleClass="btn btn-default"/>
+				<h:link value="Turmas Cadastradas" outcome="/admin/turmaList" styleClass="btn btn-default"/>
 			</h:form>
-			<h:outputScript name="/js/datepicker-component.js" />
+			<h:outputScript name="resources/js/datepicker-component.js" />
+			<script src="resources/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
 	</ui:define>
 
 </ui:composition>

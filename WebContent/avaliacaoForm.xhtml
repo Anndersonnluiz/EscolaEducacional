@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
 	<f:viewParam name="id" value="#{usuarioMB.editarId}" />
@@ -35,50 +36,51 @@
 				<div class="form-group">
 					<label for="exampleInputDescricao">Nome da Prova</label>
 					<h:inputText styleClass="form-control"
-						value="#" id="exampleInputDescricao" />
+						value="#{avaliacaoMB.avaliacao.descricao}" id="exampleInputDescricao" />
 				</div>
 				<div class="form-group"> 
 					<label for="exampleInputData">Data: </label>
-					<h:outputLabel value="12/12/12" />
-				</div>
+					<h:inputText value="#{avaliacaoMB.data}"/>
+				</div> 
 				
 				<div class="form-group">
 					<label for="exampleInputPergunta">Pergunta: </label>
 					<h:inputText styleClass="form-control"
-						value="#" id="exampleInputPergunta" />
+						value="#{avaliacaoMB.questoes.descricao}" id="exampleInputPergunta" />
 				</div>
 				
 				<div class="form-group">
 					<label for="exampleInputResposta">Resposta 1</label>
 					<h:inputText styleClass="form-control"
-						value="#" id="exampleInputResposta" /> 
-						<h:selectBooleanCheckbox value="#"/>
+						value="#{avaliacaoMB.resposta1}" id="exampleInputResposta" /> 
+						<h:selectBooleanCheckbox value="#{avaliacaoMB.corretoResposta1}"/>
 				</div>
 				
 				<div class="form-group">
 					<label for="exampleInputRespotas2">Resposta 2</label>
 					<h:inputText styleClass="form-control"
-						value="#" id="exampleInputRespotas2" />
-						<h:selectBooleanCheckbox value="#" />
+						value="#{avaliacaoMB.resposta2}" id="exampleInputRespotas2" />
+						<h:selectBooleanCheckbox value="#{avaliacaoMB.corretoResposta2}" />
 				</div>
 				
 				<div class="form-group">
 					<label for="exampleInputRespostas3">Resposta 3</label>
 					<h:inputText styleClass="form-control"
-						value="#" id="exampleInputRespostas3" />
-						<h:selectBooleanCheckbox value="#" />
+						value="#{avaliacaoMB.resposta3}" id="exampleInputRespostas3" />
+						<h:selectBooleanCheckbox value="#{avaliacaoMB.corretoResposta3}" />
 				</div>
 				
 				<div class="form-group">
 					<label for="exampleInputResposta4">Resposta 4</label>
 					<h:inputText styleClass="form-control"
-						value="#" id="exampleInputResposta4" />
-						<h:selectBooleanCheckbox value="#" />
+						value="#{avaliacaoMB.resposta4}" id="exampleInputResposta4" />
+						<h:selectBooleanCheckbox value="#{avaliacaoMB.corretoResposta4}" />
+						
 				</div>
-				
+				<p:commandButton ajax="false" action="#{avaliacaoMB.adicionar}"   value="Adicionar" /> 
 				<button type="reset" class="btn btn-default">Restaurar</button>
-				<h:commandButton styleClass="btn btn-success"
-					action="#" value="Salvar" />
+				<h:commandButton styleClass="btn btn-success" 
+					action="#{avaliacaoMB.salvar}" value="Salvar" />
 			</h:form>
 		</div>
 	</ui:define>

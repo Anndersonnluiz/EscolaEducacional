@@ -11,9 +11,9 @@ import br.senai.sc.pwAvancada.model.Dominio.Usuario;
 
 @FacesConverter(value="UsuarioConverter")
 public class UsuarioConverter implements Converter{
-
+ 
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) {
-		List<Usuario> listaUsuario = (List<Usuario>) arg1.getAttributes().get("listaAluno");
+		List<Usuario> listaUsuario = (List<Usuario>) arg1.getAttributes().get("listaUsuario");
 	    if (listaUsuario != null) {
 	        for (Usuario usuario : listaUsuario) {
 	            if (usuario.getNome().equalsIgnoreCase(arg2)) {

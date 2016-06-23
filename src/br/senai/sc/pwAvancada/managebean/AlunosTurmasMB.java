@@ -106,6 +106,8 @@ public class AlunosTurmasMB {
 	}
 	
 	
+	
+	
 	public void gerarListaAlunosTurma(){
 		String sql = "Select u from Usuario u where u.perfil.idperfil=1 and u.turma.idturma=" + turma.getIdturma();
 		try {

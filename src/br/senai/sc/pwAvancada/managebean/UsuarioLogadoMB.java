@@ -30,6 +30,7 @@ public class UsuarioLogadoMB {
 	private Usuario usuario;
     private String novaSenha;
     private String confirmaNovaSenha;
+    private boolean tipoUsuario;
 
 
    
@@ -62,6 +63,17 @@ public class UsuarioLogadoMB {
     public void setConfirmaNovaSenha(String confirmaNovaSenha) {
         this.confirmaNovaSenha = confirmaNovaSenha;
     }
+    
+    
+    
+    
+	public boolean isTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(boolean tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
 
 	public String validarUsuario() throws SQLException{
         if ((usuario.getLogin()==null) && (usuario.getSenha()==null)){
@@ -170,7 +182,7 @@ public class UsuarioLogadoMB {
     public String paginaPrincipal(){
     	return "paginainicial";
     }
-    
+     
     public String importar(){
      	Map<String,Object> options = new HashMap<String, Object>();
         options.put("contentWidth",400);
@@ -178,6 +190,16 @@ public class UsuarioLogadoMB {
   //  	Limpar limpar = new Limpar();
    /// 	limpar.limparAcomodacao();
     	return "";
+    } 
+    
+    
+    public Boolean admin(){
+    	if (usuario.getPerfil().getColocacao().equalsIgnoreCase("Aluno")) {
+			tipoUsuario = false;
+		}else{
+			tipoUsuario = true;
+		}
+    	return tipoUsuario;
     }
     
     

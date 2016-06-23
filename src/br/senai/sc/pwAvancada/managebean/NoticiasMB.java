@@ -115,7 +115,7 @@ public class NoticiasMB {
 		}
 		listarNoticias = null;
 		noticias = new Noticias();
-		return "";
+		return "noticiasList";
 	}
 	
 	

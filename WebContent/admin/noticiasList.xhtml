@@ -10,32 +10,36 @@
 	<ui:define name="conteudo">
 		<h:form>
 			<br /><br /><br /><br /><br /><br />
-			<h:dataTable value="#{perfilMB.listarPerfil}" var="perfil"
+			<h:dataTable value="#{noticiasMB.listarNoticias}" var="noticias"
 				styleClass="table" style="width:80%;">
-				<f:facet name="header">Perfil</f:facet>
+				<f:facet name="header">Noticias</f:facet>
 				<h:column>
 					<f:facet name="header">ID</f:facet>
-					<h:outputText value="#{perfil.idperfil}" />
+					<h:outputText value="#{noticias.idnoticias}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">Colocação</f:facet>
-					<h:outputText value="#{perfil.colocacao}" />
+					<f:facet name="header">Titulo</f:facet>
+					<h:outputText value="#{noticias.titulo}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Descrição</f:facet>
+					<h:outputText value="#{noticias.descricao}" />
 				</h:column>
 				<h:column>
 						<span> <h:link styleClass="btn btn-default"
-								outcome="/perfilForm" value="Editar">
-								<f:param name="id" value="#{perfil.idperfil}" />
+								outcome="/admin/noticiasForm" value="Editar">
+								<f:param name="id" value="#{noticias.idnoticias}" />
 							</h:link>
 						</span> 
 						<span> <h:commandLink styleClass="btn btn-warning"
-								action="#{perfilMB.excluir}" value="Excluir"
-								onclick="return confirm('Tem certeza da exclusão do usuario  #{perfil.idperfil}')" >
-								<f:param name="idperfil" value="#{perfil.idperfil}"/>
+								action="#{noticiasMB.excluir}" value="Excluir"
+								onclick="return confirm('Tem certeza da exclusão da turma  #{noticias.idnoticias}')" >
+								<f:param name="idnoticias" value="#{noticias.idnoticias}"/>
 								</h:commandLink>
 						</span>
 					
 					 
-				</h:column>  
+				</h:column> 
 
 			</h:dataTable>
 		</h:form>

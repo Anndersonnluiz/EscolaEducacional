@@ -15,8 +15,8 @@ public class TurmaRN {
 	}
 	
 	
-	public void salvar(Turma turma) throws SQLException{
-		turmaDao.salvar(turma);
+	public Turma salvar(Turma turma) throws SQLException{
+		return turmaDao.salvar(turma);
 	}
 	
 	public Turma consultar(Integer id) throws SQLException{

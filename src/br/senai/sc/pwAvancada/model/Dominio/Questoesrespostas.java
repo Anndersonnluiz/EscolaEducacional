@@ -13,10 +13,16 @@ public class Questoesrespostas {
 	@GeneratedValue
 	private Integer idquestoesrespostas;
 	private String descricao;
-	private Integer correta;
+	private String correto;
 	@JoinColumn(name = "questoes_idquestoes", referencedColumnName = "idquestoes")
     @ManyToOne(optional = false)
     private Questoes questoes;
+	@JoinColumn(name = "respostas_idrespostas", referencedColumnName = "idresposta")
+    @ManyToOne(optional = false)
+    private Respostas respostas;
+	@JoinColumn(name = "avaliacao_idavaliacao", referencedColumnName = "idavaliacao")
+    @ManyToOne(optional = false)
+    private Avaliacao avaliacao;
 	
 	public Integer getIdquestoesrespostas() {
 		return idquestoesrespostas;
@@ -30,18 +36,34 @@ public class Questoesrespostas {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Integer getCorreta() {
-		return correta;
-	}
-	public void setCorreta(Integer correta) {
-		this.correta = correta;
-	}
+	
 	public Questoes getQuestoes() {
 		return questoes;
 	}
 	public void setQuestoes(Questoes questoes) {
 		this.questoes = questoes;
 	}
+	public String getCorreto() {
+		return correto;
+	}
+	public void setCorreto(String correto) {
+		this.correto = correto;
+	}
+	public Respostas getRespostas() {
+		return respostas;
+	}
+	public void setRespostas(Respostas respostas) {
+		this.respostas = respostas;
+	}
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
+	}
+	
+	
+	
 	
 	
 }
