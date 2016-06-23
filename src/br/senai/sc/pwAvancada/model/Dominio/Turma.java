@@ -1,7 +1,6 @@
 package br.senai.sc.pwAvancada.model.Dominio;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -9,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -29,8 +27,6 @@ public class Turma {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dataFinalPrevista")
 	private Date dataFinalPrevista;
-	@ManyToMany
-	private List<Usuario> listaAlunos;
 	
 	public Turma() {
 		// TODO Auto-generated constructor stub
@@ -68,13 +64,6 @@ public class Turma {
 		this.dataFinalPrevista = dataFinalPrevista;
 	}
 
-	public List<Usuario> getListaAlunos() {
-		return listaAlunos;
-	}
-
-	public void setListaAlunos(List<Usuario> listaAlunos) {
-		this.listaAlunos = listaAlunos;
-	}
 	
 	
 	

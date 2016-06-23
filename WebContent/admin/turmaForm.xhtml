@@ -38,12 +38,16 @@
 				
 				<div class="form-group">
 					<label>Data de Inicio</label>
-					<p:inputMask mask="99/99/9999" styleClass="form-control" style="width:30%;" value="#{turmaMB.dataInicio}"/>
+					<p:inputMask mask="99/99/9999" styleClass="form-control" style="width:30%;" value="#{turmaMB.turma.dataInicio}">
+						<f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+					</p:inputMask>
 				</div>
 			 
 				<div class="form-group">
 					<label>Data de termino prevista</label>
-					<p:inputMask mask="99/99/9999" styleClass="form-control" style="width:30%;" value="#{turmaMB.dataTermino}"/>
+					<p:inputMask mask="99/99/9999" styleClass="form-control" style="width:30%;" value="#{turmaMB.turma.dataFinalPrevista}">
+						<f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+					</p:inputMask>
 				</div>
 			
 				<div class="row">
